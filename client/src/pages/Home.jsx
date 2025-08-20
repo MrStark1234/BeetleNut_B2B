@@ -16,11 +16,11 @@ const Home = () => (
             <span>
               <TypeAnimation
                 sequence={[
-                  " White BetelNuts",
+                  " White BetelNuts.",
                   2000,
-                  " Red BetelNuts",
+                  " Red BetelNuts.",
                   2000,
-                  " and other varieties of BetelNuts",
+                  " wide varieties of BetelNuts.",
                   2000,
                 ]}
                 wrapper="span"

@@ -9,6 +9,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log(form);
       // Ideally: await API.post("/enquiry", form)
       setDone(true);
     } catch {
