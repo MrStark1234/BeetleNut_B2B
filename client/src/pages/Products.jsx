@@ -17,7 +17,7 @@ const Products = () => {
 
   return (
     <section className="max-w-7xl mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-4 text-blue-800">Our Products</h2>
+      <h2 className="text-3xl font-bold mb-4 text-blue-500">Our Products</h2>
       {products.length ? (
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
           {products.map((prod) => (

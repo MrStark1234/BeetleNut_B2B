@@ -62,7 +62,7 @@ const ProductForm = ({ existing = {}, onDone }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-slate-50 p-6 rounded shadow mb-8 flex flex-col gap-3"
+      className="bg-slate-50 text-black p-6 rounded shadow mb-8 flex flex-col gap-3"
     >
       <h3 className="font-bold mb-2">
         {existing._id ? "Edit" : "Add"} Product

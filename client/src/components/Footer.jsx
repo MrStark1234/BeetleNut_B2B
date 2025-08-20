@@ -1,7 +1,7 @@
 const Footer = () => (
-  <footer className="bg-slate-100 text-center py-4">
-    <p className="text-xs text-gray-600">
-      © {new Date().getFullYear()} Raju Traders. All rights reserved.
+  <footer className=" text-center py-4">
+    <p className="text-xs text-gray-300">
+      © {new Date().getFullYear()} NutraBetel. All rights reserved.
     </p>
   </footer>
 );

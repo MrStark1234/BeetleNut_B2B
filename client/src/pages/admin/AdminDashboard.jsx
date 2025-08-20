@@ -47,7 +47,7 @@ const AdminDashboard = () => {
       <div className="grid md:grid-cols-2 gap-6">
         {products.map((prod) => (
           <div
-            className="bg-white shadow rounded p-5 flex gap-4"
+            className="bg-white text-black shadow rounded p-5 flex gap-4"
             key={prod._id}
           >
             {prod.imageUrl && (

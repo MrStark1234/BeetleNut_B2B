@@ -18,19 +18,19 @@ const ProductDetail = () => {
   if (!prod) return <div className="text-center my-20">Product Not Found.</div>;
   return (
     <section className="max-w-3xl mx-auto p-6 bg-white shadow mt-8 rounded">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8 items-center">
         {prod.imageUrl && (
           <img
             src={prod.imageUrl}
             alt={prod.name}
-            className="w-64 rounded shadow"
+            className="w-[50%] h-[50%] rounded shadow"
           />
         )}
         <div>
-          <h2 className="text-2xl font-bold mb-1">{prod.name}</h2>
-          <p className="mb-2 text-gray-500">{prod.category}</p>
-          <p className="mb-4">{prod.description}</p>
-          <ul className="text-sm mb-4">
+          <h2 className="text-2xl font-bold mb-1 text-black">{prod.name}</h2>
+          <p className="mb-2 text-green-400">{prod.category}</p>
+          <p className="mb-4 text-zinc-900">{prod.description}</p>
+          <ul className="text-sm mb-4 text-gray-500">
             <li>
               <b>Material:</b> {prod.material}
             </li>
@@ -63,13 +63,15 @@ const ProductDetail = () => {
               <b>Price:</b> ₹{prod.price}
             </li>
           </ul>
-          <button
-            className="bg-blue-700 text-white rounded px-4 py-2 shadow font-semibold mt-2"
-            onClick={() => alert("Customise Enquiry form integration here!")}
-          >
-            Send Inquiry
-          </button>
         </div>
+      </div>
+      <div className="flex justify-center">
+        <button
+          className="bg-blue-700 text-white rounded px-4 py-2 shadow font-semibold mt-2"
+          onClick={() => alert("Customise Enquiry form integration here!")}
+        >
+          Send Inquiry
+        </button>
       </div>
     </section>
   );

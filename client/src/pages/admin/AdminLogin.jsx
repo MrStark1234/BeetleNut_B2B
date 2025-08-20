@@ -22,7 +22,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <section className="max-w-sm mx-auto mt-16 p-8 bg-white shadow rounded">
+    <section className="max-w-sm mx-auto mt-16 p-8 bg-white text-black shadow rounded">
       <h2 className="text-xl font-bold mb-4">Admin Login</h2>
       {error && <p className="text-red-600 text-sm mb-2">{error}</p>}
       <form onSubmit={handleSubmit} className="space-y-3">

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 const Navbar = () => (
-  <nav className="bg-white shadow sticky top-0 z-10">
+  <nav className="backdrop-blur-lg shadow sticky top-0 z-10">
     <div className="max-w-7xl mx-auto flex justify-between items-center p-3">
-      <Link to="/" className="font-bold text-xl text-blue-800">
-        Raju Traders
+      <Link to="/" className="font-bold text-xl text-blue-500">
+        NutraBetel
       </Link>
       <div className="space-x-6 flex items-center">
         <Link to="/" className="hover:text-blue-600">
