@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
+import InquiryForm from "./components/InquiryPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/products/:id" element={<ProductDetail />} />
+          <Route path="/inquiry" element={<InquiryForm />} />
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />

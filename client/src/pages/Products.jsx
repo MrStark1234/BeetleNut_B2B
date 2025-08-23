@@ -16,7 +16,7 @@ const Products = () => {
   if (loading) return <Loader />;
 
   return (
-    <section className=" max-w-7xl mx-auto p-4">
+    <section className=" mx-auto p-6 min-h-[100vh] bg-zinc-900">
       <h2 className="text-3xl font-bold mb-4 text-white">Our Products</h2>
       {products.length ? (
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
