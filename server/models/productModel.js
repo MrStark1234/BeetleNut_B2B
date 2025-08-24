@@ -12,6 +12,10 @@ const productSchema = new mongoose.Schema({
   packagingType: String,
   selfLife: String,
   price: Number,
+  originalPrice: Number, //New
+  isBestSeller: Boolean, //New
+  discountPercentage: Number, //New
+  stock: Number, //New
   imageUrl: String, // Cloudinary URL
   businessType: [String],
   packSizes: [String],

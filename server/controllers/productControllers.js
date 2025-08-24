@@ -17,6 +17,10 @@ const addProduct = async (req, res) => {
       packagingType,
       selfLife,
       price,
+      originalPrice, //New
+      isBestSeller, //New
+      discountPercentage, //New
+      stock, //New
       businessType,
       packSizes,
     } = req.body;
@@ -61,6 +65,10 @@ const addProduct = async (req, res) => {
       packagingType,
       selfLife,
       price,
+      originalPrice, //New
+      isBestSeller, //New
+      discountPercentage, //New
+      stock, //New
       businessType: businessTypeArr,
       packSizes: packSizesArr,
       imageUrl,
@@ -109,6 +117,10 @@ const updateProduct = async (req, res) => {
       packagingType,
       selfLife,
       price,
+      originalPrice, //New
+      isBestSeller, //New
+      discountPercentage, //New
+      stock, //New
       businessType,
       packSizes,
     } = req.body;
@@ -126,6 +138,10 @@ const updateProduct = async (req, res) => {
       packagingType,
       selfLife,
       price,
+      originalPrice, //New
+      isBestSeller, //New
+      discountPercentage, //New
+      stock, //New
     };
 
     // Arrays

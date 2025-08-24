@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import API from "../../utils/api";
 const initial = {
   name: "",
@@ -13,6 +13,10 @@ const initial = {
   packagingType: "",
   selfLife: "",
   price: "",
+  originalPrice: "", //New
+  isBestSeller: "", //New
+  discountPercentage: "", //New
+  stock: "", //New
   imageUrl: "",
   businessType: [],
   packSizes: [],
@@ -22,6 +26,19 @@ const ProductForm = ({ existing = {}, onDone }) => {
   const [form, setForm] = useState({ ...initial, ...existing });
   const [file, setFile] = useState(null);
   const [saving, setSaving] = useState(false);
+
+  // ✅ Auto-calculate discount whenever price or originalPrice changes
+  useEffect(() => {
+    const { price, originalPrice } = form;
+    if (price && originalPrice && Number(originalPrice) > 0) {
+      const discount =
+        ((Number(originalPrice) - Number(price)) / Number(originalPrice)) * 100;
+      setForm((f) => ({
+        ...f,
+        discountPercentage: discount.toFixed(2), // 2 decimal points
+      }));
+    }
+  }, [form.price, form.originalPrice]);
 
   const handleChange = (e) =>
     setForm((f) => ({
@@ -137,6 +154,41 @@ const ProductForm = ({ existing = {}, onDone }) => {
           type="number"
           placeholder="Price"
           value={form.price}
+          onChange={handleChange}
+          className="border px-3 py-2 rounded w-80"
+        />
+        <input
+          name="originalPrice"
+          type="number"
+          placeholder="Original Price"
+          value={form.originalPrice}
+          onChange={handleChange}
+          className="border px-3 py-2 rounded w-80"
+        />
+        <select
+          name="isBestSeller"
+          className="border px-3 py-2 rounded"
+          required
+          value={form.isBestSeller}
+          onChange={handleChange}
+        >
+          <option value="">Select the Option</option>
+          <option>true</option>
+          <option>false</option>
+        </select>
+        <input
+          name="discountPercentage"
+          type="number"
+          placeholder="discount Percentage"
+          value={form.discountPercentage}
+          readOnly // ✅ auto-calculated, so make read-only
+          className="border px-3 py-2 rounded w-80"
+        />
+        <input
+          name="stock"
+          type="number"
+          placeholder="Updated Stock"
+          value={form.stock}
           onChange={handleChange}
           className="border px-3 py-2 rounded w-80"
         />
