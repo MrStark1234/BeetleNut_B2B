@@ -13,6 +13,7 @@ const inquirySchema = new mongoose.Schema({
   businessFrequency: { type: String }, // one-time, monthly etc
   message: { type: String },
   agreeToContact: { type: Boolean, default: false },
+  status: { type: String, default: "Pending" },
 
   createdAt: { type: Date, default: Date.now },
 });

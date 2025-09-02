@@ -2,6 +2,7 @@ import { useState } from "react";
 import API from "../utils/api";
 import { useLocation } from "react-router-dom";
 import prod from "../assets/prod.svg";
+import cont from "../assets/cont.svg";
 
 const InquiryForm = () => {
   const location = useLocation();
@@ -54,8 +55,11 @@ const InquiryForm = () => {
 
   if (done)
     return (
-      <div className="text-green-600 p-6">
-        Thank you! Your inquiry is sent. Our team will contact you soon.
+      <div className="w-full flex items-center justify-center flex-col gap-24 p-4 mt-10">
+        <div className="bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] bg-clip-text text-transparent  font-extrabold md:text-4xl">
+          Thank you! Your inquiry is sent. Our team will contact you soon.
+        </div>
+        <img className="md:w-[40%] " src={cont} alt="cont" />
       </div>
     );
 

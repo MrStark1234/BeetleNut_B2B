@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../../utils/api";
 import ProductForm from "./ProductForm";
 import Loader from "../../components/Loader";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -28,12 +29,20 @@ const AdminDashboard = () => {
     <section className="max-w-5xl mx-auto mt-10 px-3">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Admin Dashboard</h2>
-        <button
-          className="bg-green-700 text-white py-1 px-4 rounded"
-          onClick={() => setEditing({})}
-        >
-          Add Product +
-        </button>
+        <div className="flex gap-2">
+          <button
+            className=" text-white py-1 px-4 rounded"
+            onClick={() => setEditing({})}
+          >
+            Add Product +
+          </button>
+          <Link
+            className="bg-[#1a1a1a] text-white py-3 px-4 rounded-lg"
+            to="/admin/inquiry"
+          >
+            Client Inquiries
+          </Link>
+        </div>
       </div>
       {editing && (
         <ProductForm

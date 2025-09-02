@@ -38,24 +38,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* <div className="space-x-6 flex items-center">
-        <Link to="/" className="hover:text-orange-500">
-          Home
-        </Link>
-        <Link to="/products" className="hover:text-orange-500">
-          Products
-        </Link>
-        <Link to="/contact" className="hover:text-orange-500">
-          Contact
-        </Link>
-        <Link
-          to="/admin/login"
-          className="text-sm px-4 py-1 bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] text-gray-700 rounded hover:scale-105"
-        >
-          Admin
-        </Link>
-      </div> */}
-
         {/* Hamburger for Mobile */}
         <button
           className="md:hidden text-3xl text-orange-600 focus:outline-none"

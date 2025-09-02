@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import InquiryForm from "./components/InquiryPage";
+import AdminInquiries from "./pages/admin/AdminInquiries";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route element={<PrivateRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/inquiry" element={<AdminInquiries />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />
