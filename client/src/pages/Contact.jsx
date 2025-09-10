@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // --- Enter your store address Google Map Embed Link below ---
 const MAP_EMBED_URL =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29314.988998816194!2d88.3970364!3d22.5747786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277b5d61a6d77%3A0xacb4e916f977831b!2sRaju%20Traders!5e0!3m2!1sen!2sin!4v1692792224425!5m2!1sen!2sin";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7367.991706156602!2d88.45355625716107!3d22.579258424111792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027517cef80827%3A0xa8dfaf910a5e2da2!2sCF%20Block(Newtown)%2C%20Action%20Area%20I%2C%20Newtown%2C%20New%20Town%2C%20West%20Bengal%20700107!5e0!3m2!1sen!2sin!4v1757515727965!5m2!1sen!2sin";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
