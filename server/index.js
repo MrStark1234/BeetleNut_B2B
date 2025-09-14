@@ -10,7 +10,13 @@ const aiRoutes = require("./routes/aiRoutes");
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://beetle-nut.vercel.app/"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 app.use(express.json());
 
 mongoose
