@@ -1,7 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
+import ProductQAWidget from "../components/ProductQAWidget";
 import API from "../utils/api";
 import Loader from "../components/Loader";
+import AIChatFab from "../components/AIChatFab";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -188,6 +190,8 @@ const ProductDetail = () => {
             Send Inquiry
           </button>
         </div>
+        {/* AI Q&A */}
+        <AIChatFab productId={prod._id} />
       </div>
     </div>
   );

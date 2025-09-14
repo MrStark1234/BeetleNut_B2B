@@ -46,7 +46,7 @@ const AdminLogin = () => {
         />
         <button
           type="submit"
-          className="w-full bg-blue-700 text-white font-semibold py-2 rounded"
+          className="w-full bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] text-gray-700 font-semibold py-2 rounded"
         >
           Login
         </button>

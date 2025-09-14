@@ -74,7 +74,7 @@ const AdminDashboard = () => {
               <div className="mt-2 flex gap-3">
                 <button
                   onClick={() => setEditing(prod)}
-                  className="bg-blue-700 text-white px-3 py-1 rounded text-xs"
+                  className="bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] text-gray-700 px-3 py-1 rounded text-xs"
                 >
                   Edit
                 </button>

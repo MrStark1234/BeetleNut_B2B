@@ -218,17 +218,17 @@ const ProductForm = ({ existing = {}, onDone }) => {
         type="file"
         accept="image/*"
         onChange={(e) => setFile(e.target.files[0])}
-        className="mt-2"
+        className="mt-2 cursor-pointer"
       />
       <button
-        className="bg-blue-800 text-white px-5 py-2 rounded font-bold"
+        className="bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] text-gray-700 px-5 py-2 rounded font-bold"
         disabled={saving}
       >
         {saving ? "Saving..." : existing._id ? "Update" : "Add"}
       </button>
       <button
         type="button"
-        className="mt-1 text-xs text-gray-600 underline"
+        className="mt-1 text-xs text-white bg-zinc-800 py-2"
         onClick={onDone}
       >
         Cancel
