@@ -8,7 +8,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:80", // server port
+        target:
+          "https://beetlenut-b2b.onrender.com/api" || "http://localhost:80", // server port
         changeOrigin: true,
       },
     },
