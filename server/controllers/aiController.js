@@ -7,14 +7,16 @@ const { askGemini } = require("../lib/gemini");
  * body: { productId: string, question: string }
  */
 async function productQA(req, res) {
-  try {
-    const { productId, question } = req.body || {};
-    if (!productId || !question) {
-      return res
-        .status(400)
-        .json({ error: "productId and question are required" });
-    }
+  // Basic input guard
+  const { productId, question } = req.body || {};
+  if (!productId || !question || typeof question !== "string") {
+    return res
+      .status(400)
+      .json({ error: "productId and question (string) are required" });
+  }
 
+  try {
+    // Fetch product
     const product = await Product.findById(productId).lean();
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
@@ -49,35 +51,97 @@ async function productQA(req, res) {
     if (Array.isArray(product.packSizes) && product.packSizes.length)
       ctx.push(`Pack Sizes: ${product.packSizes.join(", ")}`);
 
-    const context = ctx.join("\n");
+    // Safe truncation to avoid oversized prompts
+    const contextRaw = ctx.join("\n");
+    const MAX_CONTEXT_CHARS = 6000; // conservative cap
+    const context =
+      contextRaw.length > MAX_CONTEXT_CHARS
+        ? contextRaw.slice(0, MAX_CONTEXT_CHARS) + "\n…"
+        : contextRaw;
 
     const system =
-      "You are an ecommerce product assistant. Answer only using the Product Context. If missing, say 'Not available in product context.'";
+      "You are an ecommerce product assistant. Answer only using the Product Context. If missing, say 'Not available in product context.' Keep answers under 120 words.";
 
-    const answer = await askGemini({
-      system,
-      user: question,
-      context,
-      maxTokens: 280,
-      temperature: 0.4,
-      model: "gemini-2.5-flash",
-    });
+    // Retry helper with exponential backoff for transient errors
+    async function withBackoff(fn, tries = 4, base = 1200) {
+      for (let i = 0; i < tries; i++) {
+        try {
+          return await fn();
+        } catch (e) {
+          const status = e?.status || e?.response?.status;
+          // Retry only on transient statuses
+          if (![429, 500, 503].includes(status) || i === tries - 1) {
+            throw e;
+          }
+          const delay = base * 2 ** i + Math.floor(Math.random() * 250);
+          await new Promise((r) => setTimeout(r, delay));
+        }
+      }
+    }
+
+    // Primary model call with retry
+    let answer;
+    try {
+      answer = await withBackoff(() =>
+        askGemini({
+          system,
+          user: String(question).trim(),
+          context,
+          maxTokens: 280,
+          temperature: 0.4,
+          model: "gemini-2.5-flash",
+        })
+      );
+    } catch (primaryErr) {
+      // Fallback to lighter variant on persistent overload/internal error
+      answer = await withBackoff(() =>
+        askGemini({
+          system,
+          user: String(question).trim(),
+          context,
+          maxTokens: 280,
+          temperature: 0.4,
+          model: "gemini-2.5-flash-8b",
+        })
+      );
+    }
 
     return res.json({ ok: true, productId, answer });
   } catch (err) {
     const status = err?.status || err?.response?.status || 500;
-    console.error("Gemini product-qa error:", status, err?.message || err);
-    if (status === 429) {
-      return res.status(429).json({
-        error: "Gemini rate/quota limit reached. Try later or enable billing.",
-      });
-    }
+    const message =
+      err?.message ||
+      err?.response?.data?.error?.message ||
+      "AI service failed";
+
+    // Structured server-side logging
+    console.error("Gemini product-qa error:", {
+      status,
+      message,
+      path: "/api/ai/product-qa",
+      productId,
+    });
+
+    // Granular error responses
     if (status === 401) {
       return res.status(401).json({
         error: "Invalid Gemini API key or auth. Check GEMINI_API_KEY.",
+        code: 401,
       });
     }
-    return res.status(500).json({ error: "AI service failed" });
+    if (status === 429) {
+      return res.status(429).json({
+        error: "Gemini rate/quota limit reached. Try later or enable billing.",
+        code: 429,
+      });
+    }
+    if (status === 503) {
+      return res.status(503).json({
+        error: "Model is overloaded. Please try again shortly.",
+        code: 503,
+      });
+    }
+    return res.status(status).json({ error: message, code: status });
   }
 }
 
