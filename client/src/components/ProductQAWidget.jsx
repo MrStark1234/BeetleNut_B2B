@@ -2,7 +2,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProductQA } from "../hooks/useProductQA";
 
-export default function ProductQAWidget({ productId, apiBase = "" }) {
+export default function ProductQAWidget({
+  productId,
+  apiBase = "https://beetlenut-b2b.onrender.com/api",
+}) {
   const [q, setQ] = useState("");
   const [history, setHistory] = useState([]); // [{q, a}]
   const { loading, answer, error, ask, reset } = useProductQA({
