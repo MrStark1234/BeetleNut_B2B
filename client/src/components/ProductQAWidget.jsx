@@ -4,7 +4,7 @@ import { useProductQA } from "../hooks/useProductQA";
 
 export default function ProductQAWidget({
   productId,
-  apiBase = "https://beetlenut-b2b.onrender.com/api",
+  apiBase = "https://beetlenut-b2b.onrender.com",
 }) {
   const [q, setQ] = useState("");
   const [history, setHistory] = useState([]); // [{q, a}]

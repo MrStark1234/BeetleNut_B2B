@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 app.use(
   cors({
-    origin: ["https://beetle-nut.vercel.app/"],
+    origin: ["*"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
