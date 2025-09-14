@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 
 export function useProductQA({
-  baseUrl = "https://beetlenut-b2b.onrender.com/api",
+  baseUrl = "https://beetlenut-b2b.onrender.com",
 } = {}) {
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
