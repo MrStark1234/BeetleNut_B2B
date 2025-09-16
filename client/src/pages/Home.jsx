@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import btlnt from "../assets/btlnt.svg";
+import btlnt from "../assets/btlntt.png";
 import { TypeAnimation } from "react-type-animation";
 import Testimonials from "../components/Testimonials";
 
