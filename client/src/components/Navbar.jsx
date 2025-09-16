@@ -31,7 +31,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link
-            to="/admin/login"
+            to="/admin-login"
             className="text-sm px-4 py-1 bg-gradient-to-r from-[#AA7454] via-[#FF8C42] to-[#FFD700] text-gray-700 rounded hover:scale-105"
           >
             Admin
