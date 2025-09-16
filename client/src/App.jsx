@@ -31,10 +31,10 @@ const App = () => {
           <Route path="/inquiry" element={<InquiryForm />} />
 
           {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route element={<PrivateRoute />}>
-            <Route path="/admin/dashboard" element={<AdminDashboard />} />
-            <Route path="/admin/inquiry" element={<AdminInquiries />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-inquiry" element={<AdminInquiries />} />
           </Route>
 
           <Route path="*" element={<NotFound />} />

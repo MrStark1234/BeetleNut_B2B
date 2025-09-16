@@ -4,7 +4,7 @@
       "source": "/api/:path*",
       "destination": "https://beetlenut-b2b.onrender.com/api/:path*"
     },
-   
+  
     { "source": "/((?!api|admin|_next|.*\\..*).*)", "destination": "/" }
   ]
 }
