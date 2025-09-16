@@ -15,7 +15,7 @@ const AdminLogin = () => {
     try {
       const { data } = await API.post("/auth/login", form);
       localStorage.setItem("token", data.token);
-      navigate("/admin/dashboard");
+      navigate("/admin-dashboard");
     } catch (e) {
       setError("Invalid login. Try again.");
     }

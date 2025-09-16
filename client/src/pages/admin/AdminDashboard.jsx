@@ -38,7 +38,7 @@ const AdminDashboard = () => {
           </button>
           <Link
             className="bg-[#1a1a1a] text-white py-3 px-4 rounded-lg"
-            to="/admin/inquiry"
+            to="/admin-inquiry"
           >
             Client Inquiries
           </Link>
